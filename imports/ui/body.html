@@ -7,14 +7,41 @@
   
 
       <ul>
-        {{#each questions}}
-          {{> question}}
+        {{#each questions}}          
+        {{> question}}
         {{/each}}
       </ul>
     </div>
   </body>
 
-  
+  <template name="choice">
+    <div>
+      <input type="radio" id="one" name="drone" value={{answers[0]}}
+             checked>
+      <label for="one">{{answers[0]}}</label>
+    </div>
+    
+    <div>
+      <input type="radio" id="two" name="drone" value={{answers[1]}}>
+      <label for="two">{{answers[1]}}</label>
+    </div>
+    
+    <div>
+      <input type="radio" id="three" name="drone" value={{answers[2]}}>
+      <label for="three">{{answers[2]}}</label>
+    </div>
+    
+    <div>
+      <input type="radio" id="four" name="drone" value={{answers[3]}}>
+      <label for="four">{{answers[3]}}</label>
+    </div>
+    
+    <div>
+      <input type="radio" id="five" name="drone" value={{answers[4]}}>
+      <label for="five">{{answers[4]}}</label>
+    </div>
+  </template>
+    
 
 <template name="question">
   <li>
@@ -22,37 +49,8 @@
       {{question}}
     </div>
     <div>
-      {{#each a in answers}}
-      {{a.content}}
-      {{/each}}
-     </div>
+      {{answers}}
+    </div>
   </li>
 </template>
 
-<template name="choice">
-  <div>
-    <input type="radio" id="one" name="drone" value={{answers[0]}}
-           checked>
-    <label for="one">{{answers[0]}}</label>
-  </div>
-  
-  <div>
-    <input type="radio" id="two" name="drone" value={{answers[1]}}>
-    <label for="two">{{answers[1]}}</label>
-  </div>
-  
-  <div>
-    <input type="radio" id="three" name="drone" value={{answers[2]}}>
-    <label for="three">{{answers[2]}}</label>
-  </div>
-  
-  <div>
-    <input type="radio" id="four" name="drone" value={{answers[3]}}>
-    <label for="four">{{answers[3]}}</label>
-  </div>
-  
-  <div>
-    <input type="radio" id="five" name="drone" value={{answers[4]}}>
-    <label for="five">{{answers[4]}}</label>
-  </div>
-</template>
