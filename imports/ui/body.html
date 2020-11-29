@@ -4,14 +4,12 @@
         <h1>Survey Questions</h1>
       </header>
 
-      <form name="test"></form>
       <ul>
-        {{#each questions}}          
+        {{#each questions}}
+        {{> question}}          
         {{> notUsed}}
         {{/each}}
       </ul>
-    </form>
-
     </div>
   </body>
 
