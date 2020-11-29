@@ -4,13 +4,14 @@
         <h1>Survey Questions</h1>
       </header>
 
-  
-
+      <form name="test"></form>
       <ul>
         {{#each questions}}          
-        {{> question}}
+        {{> notUsed}}
         {{/each}}
       </ul>
+    </form>
+
     </div>
   </body>
 
@@ -42,15 +43,37 @@
     </div>
   </template>
     
+<template name="radio_item2">
+  <div class="value">
+  <input type="radio" name="drone" value={{value}}/>
+  <label>{{value}}</label>
+</div>
+</template>
+
+<template name="radioItem">
+  <div>{{content}}</div>
+</template>
 
 <template name="question">
   <li>
     <div>
       {{question}}
     </div>
-    <div>
-      {{answers}}
-    </div>
   </li>
 </template>
 
+<template name="notUsed">
+  <li>
+  <div>
+    {{#each a in answers}}
+
+    {{#with a}}
+      
+    {{> radioItem}}
+    
+    {{/with}}
+    
+    {{/each}}
+  </div>
+</li>
+</template>
