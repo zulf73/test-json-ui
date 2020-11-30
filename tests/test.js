@@ -1,6 +1,6 @@
 var raw_data = require('./IPIP120.json');
 
-console.log( raw_data['value']);
+console.log( raw_data['value'][25]);
 
 function get_reference( path, doc ) {
     var keys = path.split('.');
@@ -13,11 +13,18 @@ function get_reference( path, doc ) {
 function json_set( path, doc, val ){
     var keys = path.split('.');
     var n = keys.length;
+    if (keys[0]==''){
+	keys = keys.slice(1,n+1);
+    }
+    console.log(keys);
     if (n == 1 ){
 	doc[keys[0]] = val;
+	return doc;
     }
-    return json_set( keys.slice(1,n).join('.'), doc[keys[0]], val);
+    var shorter_path = keys.slice(1,n).join('.');
+    return json_set( shorter_path, doc[keys[0]], val);
 }
 
-var new_doc = json_set( '.value.5.answers.3', raw_data, '25');
-console.log( new_doc['value'][5]['answers'] );
+var new_doc = json_set( '.value.5.answers.3.type', raw_data, '25');
+console.log( new_doc );
+//console.log( new_doc['value'][5]['answers'] );
