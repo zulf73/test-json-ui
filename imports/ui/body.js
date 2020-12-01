@@ -1,20 +1,28 @@
+import { Mongo } from 'meteor/mongo';
+import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
 import './body.html';
 const raw_data = require('/imports/api/IPIP120.json');
 
-
-
-import 'meteor/jkuester:blaze-bs4'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.css' // this is the default BS theme as example
-import popper from 'popper.js'
-global.Popper = popper // fixes some issues with Popper and Meteor
-
-
-import { BlazeBs4 } from 'meteor/jkuester:blaze-bs4'
-
-BlazeBs4.button.load()
-  .then(loaded => console.log('button template loaded'));
+Template.body.onCreated(()=>{
+    Session.set('doc',{})
+    //var res_coll= Mongo.Collection('survey_IPIP120')
+    //Session.set('res_collection', res_coll)
+})
+  
+Template.body.events({
+    'click'(e,t){
+        var val = $(e.target).data('value');
+        var src = $(e.target).data('src');
+        var doc = Session.get('doc');
+        doc[src] = val;
+          Session.set('doc', doc)
+    },
+//    'submit'(e,t){
+//      Session.get('res_collection').insert( Session.get('doc'))  
+//    },
+});
+  
 
 Template.body.helpers({
 
