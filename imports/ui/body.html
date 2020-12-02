@@ -1,7 +1,7 @@
 <body>
-    <div class="container">
-      <header>
-        <h1>Survey Questions</h1>
+  <div class="container">
+    <header>
+      <h1>Survey Questions</h1>
       </header>
 
       <ul>
@@ -11,43 +11,8 @@
         {{> notUsed}}
         {{/each}}
       </ul>
-    </div>
-  </body>
-
-  <template name="choice">
-    <div>
-      <input type="radio" id="one" name="drone" value={{answers[0]}}
-             checked>
-      <label for="one">{{answers[0]}}</label>
-    </div>
-    
-    <div>
-      <input type="radio" id="two" name="drone" value={{answers[1]}}>
-      <label for="two">{{answers[1]}}</label>
-    </div>
-    
-    <div>
-      <input type="radio" id="three" name="drone" value={{answers[2]}}>
-      <label for="three">{{answers[2]}}</label>
-    </div>
-    
-    <div>
-      <input type="radio" id="four" name="drone" value={{answers[3]}}>
-      <label for="four">{{answers[3]}}</label>
-    </div>
-    
-    <div>
-      <input type="radio" id="five" name="drone" value={{answers[4]}}>
-      <label for="five">{{answers[4]}}</label>
-    </div>
-  </template>
-    
-<template name="radio_item2">
-  <div class="value">
-  <input type="radio" name="drone" value={{value}}/>
-  <label>{{value}}</label>
-</div>
-</template>
+  </div>
+</body>
 
 <template name="radioItem">
   <button class="button">{{content }}</button>
@@ -56,7 +21,7 @@
 <template name="question">
   <li>
     <div>
-      <span> {{question}}</span>
+      <span>{{question}}</span>
     </div>
   </li>
 </template>
@@ -65,13 +30,9 @@
   <li>
   <div>
     {{#each a in answers}}
-
     {{#with a}}
-      
     {{> radioItem}}
-    
     {{/with}}
-    
     {{/each}}
   </div>
 </li>
