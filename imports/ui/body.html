@@ -6,6 +6,7 @@
 
       <ul>
         {{#each questions}}
+        {{@index}}
         {{> question}}          
         {{> notUsed}}
         {{/each}}
@@ -55,7 +56,7 @@
 <template name="question">
   <li>
     <div>
-      {{question}}
+      <span> {{question}}</span>
     </div>
   </li>
 </template>
