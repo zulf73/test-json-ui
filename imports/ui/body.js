@@ -22,6 +22,32 @@ Template.body.events({
 //      Session.get('res_collection').insert( Session.get('doc'))  
 //    },
 });
+
+Template.body.events({
+    'submit .new-task'(event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+  
+      // Get value from form element
+      const target = event.target;
+      const text = target.text.value;
+  
+      // Insert a task into the collection
+      Tasks.insert({
+        text,
+        createdAt: new Date(), // current time
+      });
+  
+      // Clear form
+      target.text.value = '';
+    },
+  });
+
+Template.body.helpers({
+    question(doc,idx){
+      console.log( doc.question +  " " + idx)
+    }
+})
   
 
 Template.body.helpers({
@@ -33,8 +59,5 @@ Template.body.helpers({
     //  ],
     questions: raw_data['value'],
 
-});
-
-Template.body.events({
 });
 
