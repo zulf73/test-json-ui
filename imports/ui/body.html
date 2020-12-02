@@ -7,20 +7,39 @@
   <div class="container">
     <header>
       <h1>Survey Questions</h1>
-      </header>
-
-      <ul>
-        {{#each questions}}
-        {{@index}}
-        {{> question}}          
-        {{> notUsed}}
-        {{/each}}
-      </ul>
+    </header>
+    
+    {{> full_survey}}
   </div>
 </body>
 
+
+
+<template name="full_survey">
+  <form>
+  <ul>
+    {{#each q in questions}}
+    {{> question}}       
+    {{> survey_item index=@index obj=q}}
+    {{/each}}
+  </ul>
+  <input type="submit" value="Submit">
+</form>
+</template>
+
+<template name = "survey_item">
+  <div class="survey_item">
+    {{index}}
+    {{#with obj}}
+    {{> notUsed}}
+    {{/with}}
+</div>
+</template>
+
 <template name="radioItem">
-{{content}}
+  <div class="radioItem">
+  <input type="radio" name={{index}} value={{content}}>
+  </div>
 </template>
 
 <template name="question">
@@ -36,7 +55,9 @@
   <div>
     {{#each a in answers}}
     {{#with a}}
-    {{> radioItem}}
+    <div>
+    <input type="radio" name={{@index}} value={{content}}>
+    </div>
     {{/with}}
     {{/each}}
   </div>

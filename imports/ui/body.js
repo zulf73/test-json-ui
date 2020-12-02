@@ -35,3 +35,14 @@ Template.body.helpers({
 
 });
 
+Template.full_survey.helpers({
+
+    //  questions: [
+    //    { question: 'This is task 1' },
+    //    { question: 'This is task 2' },
+    //    { question: 'This is task 3' },
+        //  ],
+        questions: raw_data['value'],
+    
+    });
+
