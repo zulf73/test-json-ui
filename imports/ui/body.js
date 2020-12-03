@@ -39,7 +39,7 @@ Template.body.helpers({
 });
 
 Template.full_survey.onCreated(()=>{
-    
+
 })
 
 Template.full_survey.helpers({
@@ -50,6 +50,23 @@ Template.full_survey.helpers({
     //    { question: 'This is task 3' },
         //  ],
         questions: raw_data['value'],
-    
     });
 
+Template.full_survey.events({
+    'click'(e,t){
+        // the name of the radio group for question i
+        // is just {{i}}
+        var control= e.target;
+        var val = control.val();
+        console.log(val);
+        
+        // set value to Session doc
+        var doc = Session.get('doc')
+        // document has just the answers
+        // <question number>:<answer>
+        // the click produced the answer
+        doc[control.name] = val
+        Session.set('doc',doc)
+
+    }
+})

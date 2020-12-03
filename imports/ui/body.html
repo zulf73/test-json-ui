@@ -33,32 +33,26 @@
   <div class="survey_item">
   <li>
     <span>{{index}}.</span>
-    {{#with obj}}
-    <span> {{question}}</span>
-    {{> notUsed}}
-    {{/with}}
+    <span> {{obj.question}}</span>
+    {{> notUsed qnum=index answers=obj.answers}}
   </li>
 </div>
 </template>
 
 <template name="radioItem">
   <div class="radioItem">
-  <input type="radio" name={{index}} value={{content}}>{{content}}
+  <input type="radio" name={{index}} value={{content}} data-src={{index}}>{{content}}
   </div>
 </template>
 
 
 <template name="notUsed">
-  <li>
-  <div>
-    {{#each a in answers}}
-    {{#with a}}
+  <div class="notUsed">
     <div>
-    <input type="radio" name={{@index}} value={{content}}>{{content}}
+      {{#each a in answers}}
+      <input type="radio" name={{qnum}} value={{a.content}}>{{a.content}}
+      {{/each}}
     </div>
-    {{/with}}
-    {{/each}}
   </div>
-</li>
 </template>
 
