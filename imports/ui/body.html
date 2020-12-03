@@ -34,7 +34,7 @@
   <li>
     <span>{{index}}.</span>
     <span> {{obj.question}}</span>
-    {{> notUsed qnum=index answers=obj.answers}}
+    {{> survey_answer qnum=index answers=obj.answers}}
   </li>
 </div>
 </template>
@@ -46,8 +46,8 @@
 </template>
 
 
-<template name="notUsed">
-  <div class="notUsed">
+<template name="survey_answer">
+  <div class="survey_answer">
     <div>
       {{#each a in answers}}
       <input type="radio" name={{qnum}} value={{a.content}}>{{a.content}}

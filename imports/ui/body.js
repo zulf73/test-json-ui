@@ -53,11 +53,15 @@ Template.full_survey.helpers({
     });
 
 Template.full_survey.events({
+    
+})
+
+Template.survey_answer.events({
     'click'(e,t){
         // the name of the radio group for question i
         // is just {{i}}
         var control= e.target;
-        var val = control.val();
+        var val = control.value;
         console.log(val);
         
         // set value to Session doc
