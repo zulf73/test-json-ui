@@ -1,7 +1,10 @@
 import { Mongo } from 'meteor/mongo';
 import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
+import { Blaze } from 'meteor/blaze';
 import './body.html';
+import './custom.css';
+
 const raw_data = require('/imports/api/IPIP120.json');
 
 Template.body.onCreated(()=>{
@@ -34,6 +37,10 @@ Template.body.helpers({
     questions: raw_data['value'],
 
 });
+
+Template.full_survey.onCreated(()=>{
+    
+})
 
 Template.full_survey.helpers({
 

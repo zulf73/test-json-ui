@@ -1,8 +1,3 @@
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/@blaze/css@x.x.x/dist/blaze/blaze.css">
-  <script type="module" src="https://unpkg.com/@blaze/atoms@x.x.x/dist/blaze-atoms/blaze-atoms.esm.js"></script>
-  <script nomodule="" src="https://unpkg.com/@blaze/atoms@x.x.x/dist/blaze-atoms/blaze-atoms.js"></script>
-</head>
 <body>
   <div class="container">
     <header>
@@ -18,8 +13,7 @@
 <template name="full_survey">
   <form>
   <ul>
-    {{#each q in questions}}
-    {{> question}}       
+    {{#each q in questions}}      
     {{> survey_item index=@index obj=q}}
     {{/each}}
   </ul>
@@ -27,28 +21,32 @@
 </form>
 </template>
 
+<template name="question">
+  <li>
+    <div>
+      <p><span>{{question}}</span></p>
+    </div>
+  </li>
+</template>
+
 <template name = "survey_item">
   <div class="survey_item">
-    {{index}}
+  <li>
+    <span>{{index}}.</span>
     {{#with obj}}
+    <span> {{question}}</span>
     {{> notUsed}}
     {{/with}}
+  </li>
 </div>
 </template>
 
 <template name="radioItem">
   <div class="radioItem">
-  <input type="radio" name={{index}} value={{content}}>
+  <input type="radio" name={{index}} value={{content}}>{{content}}
   </div>
 </template>
 
-<template name="question">
-  <li>
-    <div>
-      <span>{{question}}</span>
-    </div>
-  </li>
-</template>
 
 <template name="notUsed">
   <li>
@@ -56,7 +54,7 @@
     {{#each a in answers}}
     {{#with a}}
     <div>
-    <input type="radio" name={{@index}} value={{content}}>
+    <input type="radio" name={{@index}} value={{content}}>{{content}}
     </div>
     {{/with}}
     {{/each}}
